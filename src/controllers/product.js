@@ -47,6 +47,7 @@ export const remove = async (req, res) => {
 //update
 
 
+
 export const update = async (req, res) => {
     const condition = { id: req.params.id}
     const update = req.body;
