@@ -53,7 +53,7 @@ export const update = async (req, res) => {
     const update = req.body;
 
     try {
-        const product = await Product.findOneAndDelete(condition, update).exec();
+        const product = await Product.findOneAndUpdate(condition, update).exec();
         // const result = data.map(item => item.id == req.params.id ? req.body : item)
         res.json(result);
     } catch (error) {
