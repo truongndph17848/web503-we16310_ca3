@@ -1,27 +1,20 @@
-import mongoose from "mongoose";
+import User from "../models/auth";
 
-const user = mongoose.model('user', {name: String});
-
-
-
-
-export const register = async (req, res) => {
-
+export const register = async (req, res) =>{
     try {
-        const user = await new user(req.body).save();
-        res.json(user); 
-    } catch (error) { 
-        console.log(error);
-    }
-
-}
-
-export const login = async(req, res) => {
-    try {
-         // res.json(data.find(item => item.id == req.params.id));
-        const user = await user.findOne({_id: req.params.email}).exec();
-        res.json(user);
+        const register = await new User(req.body).save();
+        res.json(register);
     } catch (error) {
-        console.log(error);
+        console.log("khong them dc san pham");
+        }
+    }   
+
+
+    export const login = async (req, res) =>{
+        try {
+            const lg = await User.findOne({_id: req.params.id}).exec();
+            res.json(lg);
+        } catch (error) {
+            console.log(" dang nhap that bai");
+            }
     }
-}

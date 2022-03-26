@@ -1,24 +1,21 @@
-// const express = require('express');
-import express from 'express';
-import cors from 'cors';
-import productRoute from './routes/product';
-import userRoute from './routes/user';
-import morgan from 'morgan';
-import mongoose from 'mongoose';
+import express from "express";
+import morgan from "morgan";
+import mongoose from "mongoose";
 
-import categoryRoute from './routes/category'
+import productRoute from './routes/product';
+import userRoute from './routes/auth';
+
 
 const app = express();
 
+
 // middleware
-app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 
 // routes
-app.use("/api", productRoute)
-app.use("/api", userRoute )
-app.use("/api", categoryRoute)
+app.use("/api", productRoute);
+app.use("/api", userRoute);
 
 //mongoose
 mongoose.connect("mongodb://localhost:27017/web16310")

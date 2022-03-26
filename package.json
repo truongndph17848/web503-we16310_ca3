@@ -1,7 +1,7 @@
 {
   "name": "sp22",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. npm i --save-dev nodemon babel-cli babel-preset-env babel-preset-stage-0 2. npm i express mongoose 3. create file .babelrc in root folder<br />",
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js --exec babel-node -e js"
@@ -20,7 +20,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mongoose": "^6.2.6"
+    "mongoose": "^6.2.8",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
