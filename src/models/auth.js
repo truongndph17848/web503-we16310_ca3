@@ -1,6 +1,7 @@
 import mongoose, { Schema} from "mongoose";
 import { createHmac } from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema({
     name: {
@@ -17,6 +18,10 @@ const userSchema = new Schema({
     },
     salt: {
         type: String
+    },
+    role: {
+        type: String,
+        default: 0
     }
 }, {timestamps: true});
 
@@ -31,6 +36,7 @@ const userSchema = new Schema({
 
 
     userSchema.methods = {
+
         // login - so sánh xem pass nhập vào (mã hóa pass ) xem có giống pass cũ ko
         authenticate(password){
         return this.password === this.encryptPassword(password)    
