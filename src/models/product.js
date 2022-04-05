@@ -1,13 +1,20 @@
-import mongoose, {Schema} from "mongoose";
-
+import mongoose, { Schema } from "mongoose";
+const { ObjectId } = mongoose.Types;
 const productSchema = new Schema({
     name: {
         type: String,
-        require: true
+        minLength: 5,
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
+    },
+    category: {
+        type: ObjectId,
+        ref: "Category"
     }
-}, {timestamps: true});
-export default mongoose.model('Product', productSchema)
+}, { timestamps: true });
+
+export default mongoose.model('Product', productSchema);

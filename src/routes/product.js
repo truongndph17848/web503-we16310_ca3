@@ -1,17 +1,15 @@
-import { Router } from "express";
-import { creat, list, read, remove ,update } from "../controllers/product";
-import { userById } from "../controllers/user";
-import { checkAuth, isAdmin, isAuth, requidredSigin } from "../middlewares/checkAuth";
+import { Router } from 'express';
+import { create, get, list, remove, update } from '../controllers/product';
+import { userById } from '../controllers/user';
+import { checkAuth, isAdmin, isAuth, requiredSigin } from '../middlewares/checkAuth';
 
+const router = Router();
 
-const router = Router()
+router.get('/products', list);
+router.post('/product/:userId', requiredSigin, isAuth, isAdmin, create);
+router.get('/product/:id', checkAuth, get);
+router.delete('/product/:id', checkAuth, remove);
+router.put('/product/:id', checkAuth, update);
 
-router.get("/product",checkAuth, list)
-router.post("/products/:userId",requidredSigin,isAuth,isAdmin, checkAuth, creat)
-router.get("/product",checkAuth, read)
-router.delete("/product",checkAuth, remove)
-router.put("/product",checkAuth, update)
-
-
-
+router.param('userId', userById)
 export default router;
